@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+<div class="container">
+
+    <div class="row">
+        <mat-toolbar color="primary">
+            <span>Registra Tesis</span>
+        </mat-toolbar>
+    </div>
+    <div class="row" style="margin-top: 3%">
+        <mat-form-field class="col-md-6">
+            <mat-label>Título</mat-label>
+            <input matInput [(ngModel)]="tesis.titulo" name="titulo">
+
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6">
+            <mat-label>Tema</mat-label>
+            <input matInput [(ngModel)]="tesis.tema" name="tema">
+
+        </mat-form-field>
+
+
+        <mat-form-field class="col-md-6">
+            <mat-label>Fecha Creación</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="tesis.fechaCreacion">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+
+        
+
+        <mat-form-field class="col-md-6">
+            <mat-label>Alumno</mat-label>
+            <mat-select [(ngModel)]="tesis.alumno!.idAlumno" name="tesis">
+                <mat-option>[Seleccione Alumno]</mat-option>
+                <ng-container *ngFor="let item of lstAlumno">
+                    <mat-option value="{{item.idAlumno}}">{{item.nombres}}</mat-option>
+                </ng-container>
+            </mat-select>
+
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <button mat-raised-button type="submit" color="primary" (click)="registra()">Registra</button>
+    </div>
+
+</div>

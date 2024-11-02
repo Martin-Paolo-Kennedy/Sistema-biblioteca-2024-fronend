@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<div class="text-center" *ngIf="isLogged; else loggedOut">
+    <h2>Ya has iniciado sesión</h2>
+</div>
+
+<ng-template #loggedOut>
+    <div class="container d-flex justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+
+                    <mat-form-field>
+                        <mat-label for="nombreUsuario">Nombre de Usuario</mat-label>
+                        <input matInput type="text" name="login" id="login" [(ngModel)]="loginUsuario.login"
+                        required>
+                      </mat-form-field>
+
+                    
+                    
+
+                    <div class="example-container">
+                        <mat-form-field>
+                            <mat-label>Inserta tu contraseña</mat-label>
+                            <input matInput [type]="hide() ? 'password' : 'text'" name="password" id="password" [(ngModel)]="loginUsuario.password" required/>
+                            <button mat-icon-button matSuffix (click)="clickEvent($event)"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>

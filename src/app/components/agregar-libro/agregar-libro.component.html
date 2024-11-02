@@ -1,0 +1,46 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div class="row">
+        <mat-toolbar color="primary">
+            <span>Registra Libro</span>
+        </mat-toolbar>
+    </div>
+    <div class="row" style="margin-top: 3%">
+        <mat-form-field class="col-md-4">
+            <mat-label>Título</mat-label>
+            <input matInput [(ngModel)]="libro.titulo">
+            </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <mat-label>Año</mat-label>
+            <input matInput [(ngModel)]="libro.anio">
+        </mat-form-field>
+            <mat-form-field class="col-md-4">
+            <mat-label>Serie</mat-label>
+            <input matInput [(ngModel)]="libro.serie">
+        </mat-form-field>
+            <mat-form-field class="col-md-4">
+            <mat-label>Categoría</mat-label>
+            <mat-select [(ngModel)]="libro.categoriaLibro!.idDataCatalogo">
+                <mat-option value="-1">[Seleccione]</mat-option>
+                <mat-option *ngFor="let x of lstCategoria" [value]="x.idDataCatalogo">
+                    {{ x.descripcion }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+            <mat-form-field class="col-md-4">
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="libro.tipoLibro!.idDataCatalogo">
+                <mat-option value="-1">[Seleccione]</mat-option>
+                <mat-option *ngFor="let x of lstTipo" [value]="x.idDataCatalogo">
+                    {{ x.descripcion }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+    </div>
+    <div class="row">
+        <button mat-raised-button type="submit" color="primary" (click)="registra()">Registra</button>
+    </div>
+</div>
+<!-- me sale un error y no entiendo -->

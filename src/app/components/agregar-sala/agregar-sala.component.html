@@ -1,0 +1,55 @@
+<app-menu></app-menu>
+<div class="container">
+
+
+    <div class="row">
+        <mat-toolbar color="primary">
+            <span>Registra Sala</span>
+        </mat-toolbar>
+    </div>
+    <div class="row" style="margin-top: 3%">
+        <mat-form-field class="col-md-4">
+                <mat-label>Numero</mat-label>
+                <input matInput [(ngModel)]="sala.numero" minlength="2" maxlength="40" required>
+            </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <mat-label>Piso</mat-label>
+            <input matInput [(ngModel)]="sala.piso" minlength="1" maxlength="40" required>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+                <mat-label>Alumnos</mat-label>
+                <input matInput [(ngModel)]="sala.numAlumnos" minlength="2" maxlength="40" required>
+            </mat-form-field>
+        
+        <mat-form-field class="col-md-4">
+                <mat-label>Recursos</mat-label>
+                <input matInput [(ngModel)]="sala.recursos" minlength="2" maxlength="40" required>
+            </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+                <mat-label>Sede</mat-label>
+                <mat-select [(ngModel)]="sala.sede!.idDataCatalogo">
+                    <mat-option value=" -1"> [Seleccione] </mat-option>
+                    <mat-option *ngFor="let x of lstSede" [value]="x.idDataCatalogo">
+                        {{x.descripcion}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="sala.tipoSala!.idDataCatalogo">
+                <mat-option value=" -1"> [Seleccione] </mat-option>
+                <mat-option *ngFor="let x of lstTipoSala" [value]="x.idDataCatalogo">
+                    {{x.descripcion}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <button mat-raised-button class="col-md-4 mx-3" type="submit" color="primary" (click)="registraSala()">Registra</button>
+    </div>
+
+</div>

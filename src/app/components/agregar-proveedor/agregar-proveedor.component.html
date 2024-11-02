@@ -1,0 +1,63 @@
+<app-menu></app-menu>
+<div class="container">
+
+
+    <div class="row">
+        <mat-toolbar color="primary">
+            <span>Registra Proveedor</span>
+        </mat-toolbar>
+    </div>
+
+    <div class="row" style="margin-top: 3%">
+        <mat-form-field class="col-md-4">
+            <mat-label>Razón Social</mat-label>
+            <input matInput [(ngModel)]="proveedor.razonsocial">
+
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <mat-label>R.U.C</mat-label>
+            <input matInput [(ngModel)]="proveedor.ruc">
+
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <mat-label>Dirección</mat-label>
+            <input matInput [(ngModel)]="proveedor.direccion">
+
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <mat-label>Celular</mat-label>
+            <input matInput [(ngModel)]="proveedor.celular">
+
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <mat-label>Contacto</mat-label>
+            <input matInput [(ngModel)]="proveedor.contacto">
+
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <mat-label>País</mat-label>
+            <mat-select [(ngModel)]="proveedor.pais!.idPais">
+                <mat-option value="-1"> [Seleccione] </mat-option>
+                <mat-option *ngFor="let x of lstPais" [value]="x.idPais">
+                    {{x.nombre}}
+                </mat-option>
+            </mat-select>
+
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+            <mat-label>Tipo de Proveedor</mat-label>
+            <mat-select [(ngModel)]="proveedor.tipoProveedor!.idDataCatalogo">
+                <mat-option value=" -1"> [Seleccione] </mat-option>
+                <mat-option *ngFor="let x of lstTipo" [value]="x.idDataCatalogo">
+                    {{x.descripcion}}
+                </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <button mat-raised-button type="submit" color="primary" (click)="registraPro()">Registra</button>
+    </div>
+
+</div>

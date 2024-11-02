@@ -1,0 +1,98 @@
+<app-menu></app-menu>
+<div class="container">
+
+  <div class="row">
+    <mat-toolbar color="primary">
+      <span>Consulta Alumno</span>
+    </mat-toolbar>
+  </div>
+
+  <br>
+
+  <div class="col-12">
+    <mat-form-field class="col-3">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nombres">
+    </mat-form-field>
+
+    <mat-form-field class="col-3">
+      <mat-label>Apellido</mat-label>
+      <input matInput [(ngModel)]="apellidos">
+    </mat-form-field>
+
+    <mat-form-field class="col-3">
+      <mat-label>DNI</mat-label>
+      <input matInput [(ngModel)]="dni">
+    </mat-form-field>
+
+
+
+  </div>
+
+  <div class="col-12">
+    <mat-form-field class="col-3">
+      <mat-label>Pais</mat-label>
+      <mat-select [(ngModel)]="selPais">
+        <mat-option value="-1"> [Seleccione] </mat-option>
+        <mat-option *ngFor="let x of lstPais" [value]="x.idPais">
+          {{ x.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary" (click)="consulta()">Filtrar</button>
+
+  </div>
+
+  <div class="col-12">
+    <div class="mat-elevation-z8">
+      <mat-table class="mat-elevation-z8" [dataSource]="dataSource" style="width: 100%;">
+        <ng-container matColumnDef="idAlumno">
+          <th mat-header-cell *matHeaderCellDef style="width: 50px">Id</th>
+          <td mat-cell *matCellDef="let aux" style="width: 50px">{{ aux.idAlumno }}</td>
+        </ng-container>
+        <ng-container matColumnDef="nombres">
+          <th mat-header-cell *matHeaderCellDef style="width: 200px">Nombre</th>
+          <td mat-cell *matCellDef="let aux" style="width: 200px">{{ aux.nombres}}</td>
+        </ng-container>
+        <ng-container matColumnDef="apellidos">
+          <th mat-header-cell *matHeaderCellDef style="width: 200px">Apellido</th>
+          <td mat-cell *matCellDef="let aux" style="width: 200px">{{ aux.apellidos}}</td>
+        </ng-container>
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef style="width: 120px">Telefono</th>
+          <td mat-cell *matCellDef="let aux" style="width: 120px">{{ aux.telefono }}</td>
+        </ng-container>
+        <ng-container matColumnDef="dni">
+          <th mat-header-cell *matHeaderCellDef style="width: 120px">DNI</th>
+          <td mat-cell *matCellDef="let aux" style="width: 120px">{{ aux.dni }}</td>
+        </ng-container>
+        <ng-container matColumnDef="correo">
+          <th mat-header-cell *matHeaderCellDef style="width: 200px">Correo</th>
+          <td mat-cell *matCellDef="let aux" style="width: 200px">{{ aux.correo}}</td>
+        </ng-container>
+        <ng-container matColumnDef="fechaNacimiento">
+          <th mat-header-cell *matHeaderCellDef style="width: 120px">Fecha</th>
+          <td mat-cell *matCellDef="let aux" style="width: 120px">{{ aux.fechaNacimiento | date:"dd/MM/yyyy"}}</td>
+        </ng-container>
+        <ng-container matColumnDef="idPais">
+          <th mat-header-cell *matHeaderCellDef style="width: 100px">Pais</th>
+          <td mat-cell *matCellDef="let aux" style="width: 100px">{{ aux.pais!.nombre }}</td>
+        </ng-container>
+        <ng-container matColumnDef="idModalidad">
+          <th mat-header-cell *matHeaderCellDef style="width: 200px">Modalidad</th>
+          <td mat-cell *matCellDef="let aux" style="width: 200px">{{ aux.modalidad!.descripcion }}</td>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displaycolumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displaycolumns"></mat-row>
+
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[2, 4, 6]" showFirstLastButtons></mat-paginator>
+
+    </div>
+
+  </div>
+
+
+</div>
